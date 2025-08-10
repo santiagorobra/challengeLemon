@@ -52,14 +52,14 @@ git clone https://github.com/santiagorobra/challengeLemon
 ```bash
 cd challengeLemon
 ```
+
+remember to add the .env file
+
 ```bash
 npm install
 ```
 ```bash
 npx pod-install
-```
-```bash
-add .env
 ```
 ```bash
 npm run ios

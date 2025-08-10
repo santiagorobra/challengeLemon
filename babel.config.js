@@ -19,6 +19,8 @@ module.exports = {
           components: './src/components',
           store: './src/store',
           types: './src/types',
+          services: './src/services',
+          utils: './src/utils',
         },
       },
     ],

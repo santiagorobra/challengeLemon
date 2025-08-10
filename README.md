@@ -49,6 +49,7 @@ The app was developed in **React Native CLI** (without Expo) and implements the 
 ```bash
 git clone https://github.com/santiagorobra/challengeLemon
 ```
+
 ```bash
 cd challengeLemon
 ```
@@ -58,9 +59,17 @@ remember to add the .env file
 ```bash
 npm install
 ```
+
 ```bash
 npx pod-install
 ```
+
+I recommend running
+```bash
+npm run start:cache
+```
+before running the iOS or Android build.
+
 ```bash
 npm run ios
 ```

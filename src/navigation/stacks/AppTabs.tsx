@@ -8,6 +8,7 @@ import AppIcon from 'components/AppIcon';
 // Screens
 import HomeScreen from 'screens/Main/HomeScreen';
 import ExchangeScreen from 'screens/Main/ExchangeScreen';
+import ScannerScreen from 'screens/Main/ScannerScreen';
 import ProfileScreen from 'screens/Main/ProfileScreen';
 
 const AppTabs = createBottomTabNavigator({
@@ -29,6 +30,16 @@ const AppTabs = createBottomTabNavigator({
         tabBarInactiveTintColor: WHITE,
         tabBarIcon: ({ size, focused }) => (
           <AppIcon name="cash" size={size} focused={focused} />
+        ),
+      },
+    },
+    Scanner: {
+      screen: ScannerScreen,
+      options: {
+        tabBarLabel: STRINGS.SCANNER.TAB_LABEL,
+        tabBarInactiveTintColor: WHITE,
+        tabBarIcon: ({ size, focused }) => (
+          <AppIcon name="scan" size={size} focused={focused} />
         ),
       },
     },

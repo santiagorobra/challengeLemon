@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
 import BaseScreen from 'components/BaseScreen';
 import AppButton from 'components/AppButton';
@@ -6,17 +7,19 @@ import AppText from 'components/AppText';
 import { STRINGS } from 'constants/strings';
 import { useGoogleAuth } from 'hooks/useGoogleAuth';
 import { useSession } from 'hooks/useSession';
+import { clearHistory } from 'store/scannerHistorySlice';
 
 import styles from './styles';
 
 function ProfileScreen() {
   const { signOut } = useGoogleAuth();
   const { user } = useSession();
+  const dispatch = useDispatch();
 
   const logout = useCallback(() => {
     signOut();
-    // TODO: Clear others states
-  }, [signOut]);
+    dispatch(clearHistory());
+  }, [signOut, dispatch]);
 
   return (
     <BaseScreen>

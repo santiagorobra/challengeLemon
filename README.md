@@ -1,97 +1,91 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 📱 Lemon Cash – Mobile Challenge
 
-# Getting Started
+This project is part of a **technical challenge** for the company **Lemon Cash**.  
+The app was developed in **React Native CLI** (without Expo) and implements the following main features:
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## 📌 Features Implemented
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+### 1. **Google Authentication**
+- Secure Google Sign-In implementation.
+- Session management with persistent storage.
+- Error, loading, and success state handling.
+- Post-login navigation to the crypto list.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### 2. **Crypto List**
+- Displays a list of cryptocurrencies with:
+  - Name, symbol, image, current price, and 24h change percentage.
+- Pagination with infinite scroll.
+- Search bar to filter coins by name.
+- Sorting (ascending/descending).
+- Filters:
+  - Price range.
+  - Positive/negative variation in the last 24 hours.
+- Pull-to-refresh.
+- Optimized for performance and smooth UX.
+- Data powered by **CoinGecko API**.
 
-```sh
-# Using npm
-npm start
+### 3. **Exchange (Crypto ↔ Fiat)**
+- Select a cryptocurrency (BTC, ETH, USDT, etc.).
+- Enter an amount (e.g., 0.5 BTC) and see the equivalent in fiat currency (USD, EUR, ARS, PEN).
+- Change conversion direction (fiat → crypto).
+- Real-time price updates with polling every 10 seconds.
+- Accessible currency picker with search and current price info.
+- Handles loading and error states.
 
-# OR using Yarn
-yarn start
+### 4. **Wallet QR Scanner**
+- Uses the device camera to scan a QR code containing a wallet address.
+- Supports BTC, ETH, and other formats.
+- Displays scanned wallet details in a summary screen.
+- Local history of scanned addresses.
+- Mark/unmark addresses as favorites.
+- Remove addresses from history.
+- Camera permission handling and error states.
+
+---
+
+## 🚀 Getting Started
+```bash
+git clone https://github.com/santiagorobra/challengeLemon
 ```
-
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```bash
+cd challengeLemon
 ```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```bash
+npm install
 ```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
+```bash
+npx pod-install
 ```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+```bash
+add .env
+```
+```bash
 npm run ios
-
-# OR using Yarn
-yarn ios
+```
+or
+```bash
+npm run android
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## 🛠 Technologies Used
+React Native CLI (no Expo)
+- @react-native-async-storage/async-storage – persistent storage
+- @react-native-google-signin/google-signin – Google authentication
+- @react-navigation – navigation system
+- @reduxjs/toolkit – state management
+- react-native-vector-icons – icons
+- react-native-vision-camera – QR code scanning
+- react-redux – Redux binding for React
+- redux-persist – state persistence
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+## 🌍 API Used
+This project uses the CoinGecko API as the data source for cryptocurrency and fiat prices:
+**CoinGecko API Documentation**
+https://docs.coingecko.com/reference/coins-markets
 
-## Step 3: Modify your app
+## 📄 Notes
+Normally, my merge requests aim to keep changes within 16 files maximum, but due to time constraints in this challenge, several features were implemented together, resulting in a larger number of modified files.
 
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+The project is compatible with both Android and iOS, although camera functionality was only tested on Android.

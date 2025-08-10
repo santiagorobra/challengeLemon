@@ -48,7 +48,6 @@ export const useGoogleAuth = () => {
       };
       dispatch(setCredentials({ user, creds }));
     } catch (e: any) {
-      console.log('e', { e });
       setLoading(false);
       if (e?.code === statusCodes.SIGN_IN_CANCELLED) {
         setError(STRINGS.LOGIN.GOOGLE.ERROR_CANCELLED);

@@ -4,7 +4,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { STRINGS } from 'constants/strings';
 import { MARINER, MIDNIGHT_VAULT, WHITE } from 'constants/colors';
 import AppIcon from 'components/AppIcon';
+
+// Screens
 import HomeScreen from 'screens/Main/HomeScreen';
+import ExchangeScreen from 'screens/Main/ExchangeScreen';
 import ProfileScreen from 'screens/Main/ProfileScreen';
 
 const AppTabs = createBottomTabNavigator({
@@ -16,6 +19,16 @@ const AppTabs = createBottomTabNavigator({
         tabBarInactiveTintColor: WHITE,
         tabBarIcon: ({ size, focused }) => (
           <AppIcon name="home" size={size} focused={focused} />
+        ),
+      },
+    },
+    Exchange: {
+      screen: ExchangeScreen,
+      options: {
+        tabBarLabel: STRINGS.EXCHANGE.TAB_LABEL,
+        tabBarInactiveTintColor: WHITE,
+        tabBarIcon: ({ size, focused }) => (
+          <AppIcon name="cash" size={size} focused={focused} />
         ),
       },
     },

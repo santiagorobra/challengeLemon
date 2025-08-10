@@ -26,6 +26,18 @@ export const STRINGS = {
     LOADING: 'Loading...',
     EMPTY: 'No data available',
   },
+  EXCHANGE: {
+    TAB_LABEL: 'Exchange',
+    TITLE: 'Cryptocurrency Exchange',
+    FROM: 'From',
+    TO: 'To',
+    SELECT_CRYPTO: 'Select Cryptocurrency',
+    SELECT_FIAT: 'Select Fiat Currency',
+    AMOUNT: 'Amount',
+    PICKER_TITLE_CRYPTO: 'Select Cryptocurrency',
+    PICKER_TITLE_FIAT: 'Select Fiat Currency',
+    SEARCH_PLACEHOLDER: 'Search for a currency...',
+  },
   PROFILE: {
     TITLE: 'Profile',
     TAB_LABEL: 'Profile',

@@ -23,7 +23,7 @@ type FiatCurrency = {
   name: string;
 };
 
-type GetCoinsParams = {
+export type GetCoinsParams = {
   vs_currency?: 'usd' | 'eur' | 'ars' | string;
   page?: number;
   per_page?: number;

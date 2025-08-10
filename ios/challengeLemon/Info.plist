@@ -48,7 +48,6 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>FontAwesome.ttf</string>
 		<string>Ionicons.ttf</string>
 	</array>
 	<key>RCTNewArchEnabled</key>
@@ -67,5 +66,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME) would like to access the camera.</string>
 </dict>
 </plist>

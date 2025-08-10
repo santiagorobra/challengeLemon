@@ -12,7 +12,7 @@ export const STRINGS = {
   },
   HOME: {
     TAB_LABEL: 'Home',
-    TITLE: 'Home Screen',
+    TITLE: 'Home',
     SEARCH: 'Search (Tether, Bitcoin...)',
     VARIATION_ACTION: {
       ALL: 'Var: All',
@@ -37,6 +37,20 @@ export const STRINGS = {
     PICKER_TITLE_CRYPTO: 'Select Cryptocurrency',
     PICKER_TITLE_FIAT: 'Select Fiat Currency',
     SEARCH_PLACEHOLDER: 'Search for a currency...',
+  },
+  SCANNER: {
+    TAB_LABEL: 'Scanner',
+    TITLE: 'Address Scanner',
+    PERMISSION_ACTION: 'Allow camera access / Open Settings',
+    SCAN_ACTION: 'Scan Address',
+    EMPTY_STATE: "You haven't scanned any addresses yet",
+    INVALID_ADDRESS: 'The scanned code is not a valid address.',
+    SUCCESS: 'Address added successfully!',
+    ERROR_ALREADY_EXISTS: 'This wallet address is already in your list.',
+    INVALID_QR: 'Invalid QR code. Please try again.',
+    GENERIC_ERROR: 'An error occurred while scanning. Please try again.',
+    FAVORITES: 'Favorites',
+    RECENT: 'Recently Scanned',
   },
   PROFILE: {
     TITLE: 'Profile',

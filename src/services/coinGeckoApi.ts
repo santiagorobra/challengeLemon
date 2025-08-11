@@ -73,7 +73,9 @@ export const coinGeckoApi = createApi({
           page: String(page),
           per_page: String(per_page),
         });
-        if (search) params.set('ids', encodeURIComponent(search));
+        if (search) {
+          params.set('ids', encodeURIComponent(search));
+        }
         return `/coins/markets?${params.toString()}`;
       },
       transformResponse: (response: Coin[], _meta, arg) =>

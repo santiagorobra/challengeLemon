@@ -17,14 +17,20 @@ const slice = createSlice({
       const item = action.payload;
       const idx = state.items.findIndex(i => i.address === item.address);
       if (idx >= 0) {
-        state.items[idx] = { ...state.items[idx], ...item, timestamp: Date.now() };
+        state.items[idx] = {
+          ...state.items[idx],
+          ...item,
+          timestamp: Date.now(),
+        };
       } else {
         state.items.unshift({ ...item, timestamp: Date.now() });
       }
     },
     toggleFavorite(state, action: PayloadAction<string>) {
       const idx = state.items.findIndex(i => i.address === action.payload);
-      if (idx >= 0) state.items[idx].favorite = !state.items[idx].favorite;
+      if (idx >= 0) {
+        state.items[idx].favorite = !state.items[idx].favorite;
+      }
     },
     deleteItem(state, action: PayloadAction<string>) {
       state.items = state.items.filter(i => i.address !== action.payload);
@@ -35,6 +41,7 @@ const slice = createSlice({
   },
 });
 
-export const { addOrUpdate, toggleFavorite, deleteItem, clearHistory } = slice.actions;
+export const { addOrUpdate, toggleFavorite, deleteItem, clearHistory } =
+  slice.actions;
 
 export default slice.reducer;

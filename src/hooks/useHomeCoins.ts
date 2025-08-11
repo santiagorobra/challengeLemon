@@ -58,7 +58,9 @@ export function useHomeCoins(filters: HomeFilters) {
   }, [loadingNext, hasMore]);
 
   useEffect(() => {
-    if (debounceRef.current) clearTimeout(debounceRef.current);
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
+    }
     debounceRef.current = setTimeout(() => {
       setDebouncedQuery(query.trim().toLowerCase());
       setPage(1);

@@ -1,10 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import {
-  Modal,
-  View,
-  FlatList,
-  KeyboardAvoidingView,
-} from 'react-native';
+import { Modal, View, FlatList, KeyboardAvoidingView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import AppText from 'components/AppText';
@@ -38,12 +33,14 @@ const CurrencyPickerModal: React.FC<Props> = ({
   const [searchQuery, setSearchQuery] = useState('');
 
   const filtered = useMemo(() => {
-    const s = searchQuery.trim().toLowerCase();
-    if (!s) return items;
+    const searchTerm = searchQuery.trim().toLowerCase();
+    if (!searchTerm) {
+      return items;
+    }
     return items.filter(
-      it =>
-        it.symbol.toLowerCase().includes(s) ||
-        it.name.toLowerCase().includes(s),
+      currency =>
+        currency.symbol.toLowerCase().includes(searchTerm) ||
+        currency.name.toLowerCase().includes(searchTerm),
     );
   }, [searchQuery, items]);
 

@@ -75,7 +75,9 @@ export function useExchange() {
 
   const preview = useMemo(() => {
     const a = parseFloat(amount || '0') || 0;
-    if (!crypto || !fiat) return '—';
+    if (!crypto || !fiat) {
+      return '—';
+    }
     if (isCryptoToFiat) {
       return `≈ ${
         a && crypto.price ? (a * (crypto.price || 0)).toLocaleString() : '--'

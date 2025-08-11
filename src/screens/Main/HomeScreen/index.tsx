@@ -9,8 +9,8 @@ import { HomeFilters } from 'types/homeFilters';
 import { getErrorMessage } from 'utils/errors';
 
 import Header from './components/Header';
-import ListEmptyComponent from './components/ListEmptyComponent';
-import ListFooterComponent from './components/ListFooterComponent';
+import CoinListEmptyState from './components/CoinListEmptyState';
+import CoinListLoadingFooter from './components/CoinListLoadingFooter';
 import CoinRow from './components/CoinRow';
 import styles from './styles';
 
@@ -88,10 +88,10 @@ function HomeScreen(): JSX.Element {
         windowSize={7}
         updateCellsBatchingPeriod={50}
         ListEmptyComponent={
-          <ListEmptyComponent loadingInitial={loadingInitial} />
+          <CoinListEmptyState loadingInitial={loadingInitial} />
         }
         ListFooterComponent={
-          <ListFooterComponent loadingNext={loadingNext} />
+          <CoinListLoadingFooter loadingNext={loadingNext} />
         }
       />
     </BaseScreen>

@@ -9,11 +9,11 @@ type Props = {
   loadingNext: boolean;
 };
 
-const ListFooterComponent: React.FC<Props> = ({ loadingNext }) =>
+const CoinListLoadingFooter: React.FC<Props> = ({ loadingNext }) =>
   loadingNext ? (
     <View style={styles.container}>
       <ActivityIndicator size="large" color={WHITE} />
     </View>
   ) : null;
 
-export default ListFooterComponent;
+export default CoinListLoadingFooter;

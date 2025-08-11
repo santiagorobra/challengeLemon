@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View } from 'react-native';
 
 import AppText from 'components/AppText';
@@ -17,7 +17,7 @@ type Props = {
 const Header: React.FC<Props> = ({ filters, onChange }) => {
   const { query, sortDir, minPrice, maxPrice, variation } = filters;
 
-  const changeNumber = (v: string, key: 'minPrice' | 'maxPrice') => {
+  const changeNumber = useCallback((v: string, key: 'minPrice' | 'maxPrice') => {
     let value = (v ?? '').trim().replace(',', '.');
 
     if (value === '') {
@@ -26,7 +26,7 @@ const Header: React.FC<Props> = ({ filters, onChange }) => {
     }
 
     onChange({ [key]: value });
-  };
+  }, [onChange]);
 
   return (
     <View style={styles.header}>

@@ -9,6 +9,23 @@ import {
 import { GOOGLE_SIGN_IN_IOS_CLIENT_ID } from '@env';
 import { clearCredentials, setCredentials } from 'store/authSlice';
 import { STRINGS } from 'constants/strings';
+import { logger } from 'utils/logger';
+
+type GoogleError = { code?: string; message?: string };
+
+const GOOGLE_ERROR_MAP: Record<string, string> = {
+  [statusCodes.SIGN_IN_CANCELLED]: STRINGS.LOGIN.GOOGLE.ERROR_CANCELLED,
+  [statusCodes.IN_PROGRESS]: STRINGS.LOGIN.GOOGLE.ERROR_IN_PROGRESS,
+  [statusCodes.PLAY_SERVICES_NOT_AVAILABLE]:
+    STRINGS.LOGIN.GOOGLE.ERROR_PLAY_SERVICES,
+};
+
+const getGoogleErrorMessage = (err: unknown): string => {
+  const code = (err as GoogleError)?.code;
+  return (
+    (code && GOOGLE_ERROR_MAP[code]) || STRINGS.LOGIN.GOOGLE.ERROR_UNEXPECTED
+  );
+};
 
 export const useGoogleAuth = () => {
   const dispatch = useDispatch();
@@ -21,7 +38,7 @@ export const useGoogleAuth = () => {
         iosClientId: GOOGLE_SIGN_IN_IOS_CLIENT_ID,
       });
     } catch (e) {
-      console.log('Error configuring Google Sign-In:', e);
+      logger.error('Error configuring Google Sign-In:', e);
     }
   };
 
@@ -48,16 +65,7 @@ export const useGoogleAuth = () => {
       };
       dispatch(setCredentials({ user, creds }));
     } catch (e: any) {
-      setLoading(false);
-      if (e?.code === statusCodes.SIGN_IN_CANCELLED) {
-        setError(STRINGS.LOGIN.GOOGLE.ERROR_CANCELLED);
-      } else if (e?.code === statusCodes.IN_PROGRESS) {
-        setError(STRINGS.LOGIN.GOOGLE.ERROR_IN_PROGRESS);
-      } else if (e?.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        setError(STRINGS.LOGIN.GOOGLE.ERROR_PLAY_SERVICES);
-      } else {
-        setError(STRINGS.LOGIN.GOOGLE.ERROR_UNEXPECTED);
-      }
+      setError(getGoogleErrorMessage(e));
     } finally {
       setLoading(false);
     }
@@ -68,7 +76,7 @@ export const useGoogleAuth = () => {
       await GoogleSignin.signOut();
       dispatch(clearCredentials());
     } catch (e) {
-      console.log('Error signing out:', e);
+      logger.error('Error signing out:', e);
     }
   };
 

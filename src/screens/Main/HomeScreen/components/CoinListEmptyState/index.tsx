@@ -11,7 +11,7 @@ type Props = {
   loadingInitial: boolean;
 };
 
-const ListEmptyComponent: React.FC<Props> = ({ loadingInitial }) =>
+const CoinListEmptyState: React.FC<Props> = ({ loadingInitial }) =>
   loadingInitial ? (
     <View style={styles.center}>
       <ActivityIndicator size="large" color={WHITE} />
@@ -25,4 +25,4 @@ const ListEmptyComponent: React.FC<Props> = ({ loadingInitial }) =>
     </View>
   );
 
-export default ListEmptyComponent;
+export default CoinListEmptyState;

@@ -35,6 +35,7 @@ function ExchangeScreen(): JSX.Element {
     loadingFiats,
     preview,
     error,
+    handleSelectCurrency,
   } = useExchange();
 
   if (error) {
@@ -83,11 +84,7 @@ function ExchangeScreen(): JSX.Element {
               ? STRINGS.EXCHANGE.SELECT_CRYPTO
               : STRINGS.EXCHANGE.SELECT_FIAT
           }
-          onPress={() =>
-            !isCryptoToFiat
-              ? setShowCryptoPicker(true)
-              : setShowFiatPicker(true)
-          }
+          onPress={handleSelectCurrency}
           disabled={!isCryptoToFiat ? loadingCoins : loadingFiats}
           containerStyle={styles.col}
           labelStyle={styles.label}

@@ -11,18 +11,18 @@ import styles from './styles';
 
 type Props = {
   address: string;
-  ts: number;
+  timestamp: number;
   favorite: boolean;
 };
 
-const HistoryRow: React.FC<Props> = ({ address, ts, favorite }) => {
+const HistoryRow: React.FC<Props> = ({ address, timestamp, favorite }) => {
   const dispatch = useDispatch();
 
   return (
     <View style={styles.row}>
       <View style={styles.container}>
         <AppText>{address}</AppText>
-        <AppText>• {new Date(ts).toLocaleString()}</AppText>
+        <AppText>• {new Date(timestamp).toLocaleString()}</AppText>
       </View>
 
       <AppButtonIcon

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useIsFocused } from '@react-navigation/native';
 
 import {
@@ -88,6 +88,14 @@ export function useExchange() {
 
   const swapDirection = () => setIsCryptoToFiat(v => !v);
 
+  const handleSelectCurrency = useCallback(() => {
+    if (!isCryptoToFiat) {
+      setShowCryptoPicker(true);
+    } else {
+      setShowFiatPicker(true);
+    }
+  }, [isCryptoToFiat]);
+
   useEffect(() => {
     if (!crypto && cryptoItems.length) {
       setCrypto(cryptoItems.find(i => i.id === BINANCE_ID) || cryptoItems[0]);
@@ -119,5 +127,6 @@ export function useExchange() {
     loadingFiats,
     preview,
     error: coinsError || fiatsError,
+    handleSelectCurrency,
   };
 }

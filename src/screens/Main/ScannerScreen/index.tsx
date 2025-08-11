@@ -3,12 +3,12 @@ import { SectionList, StyleSheet, View } from 'react-native';
 import { Camera } from 'react-native-vision-camera';
 
 import BaseScreen from 'components/BaseScreen';
-import AppButton from 'components/AppButton';
 import AppText from 'components/AppText';
 import { STRINGS } from 'constants/strings';
 import { useWalletScanner } from 'hooks/useWalletScanner';
 
 import HistoryRow from './components/HistoryRow';
+import ScannerHeader from './components/ScannerHeader';
 import styles from './styles';
 
 function ScannerScreen(): JSX.Element {
@@ -41,35 +41,19 @@ function ScannerScreen(): JSX.Element {
         sections={sections}
         keyExtractor={item => item.address}
         ListHeaderComponent={
-          <>
-            <AppText style={styles.title} variant="title">
-              {STRINGS.SCANNER.TITLE}
-            </AppText>
-            {!hasPermission ? (
-              <AppButton
-                variant="primary"
-                title={STRINGS.SCANNER.PERMISSION_ACTION}
-                onPress={validatePermission}
-              />
-            ) : (
-              <>
-                <AppButton
-                  style={styles.scanButton}
-                  variant="primary"
-                  title={STRINGS.SCANNER.SCAN_ACTION}
-                  onPress={scan}
-                />
-                {!!success && <AppText colorType="success">{success}</AppText>}
-                {!!error && <AppText colorType="error">{error}</AppText>}
-              </>
-            )}
-          </>
+          <ScannerHeader
+            hasPermission={hasPermission}
+            onRequestPermission={validatePermission}
+            onScan={scan}
+            success={success}
+            error={error}
+          />
         }
         contentContainerStyle={styles.listContainer}
         renderItem={({ item }) => (
           <HistoryRow
             address={item.address}
-            ts={item.ts}
+            timestamp={item.timestamp}
             favorite={item.favorite}
           />
         )}

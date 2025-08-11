@@ -54,7 +54,7 @@ git clone https://github.com/santiagorobra/challengeLemon
 cd challengeLemon
 ```
 
-remember to add the .env file
+Be sure to rename the .env-template file to .env and update it with the keys provided via email before running the project.
 
 ```bash
 npm install

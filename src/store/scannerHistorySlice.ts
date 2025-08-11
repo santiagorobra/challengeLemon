@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export type HistoryItem = {
   address: string;
   favorite: boolean;
-  ts: number;
+  timestamp: number;
 };
 
 type State = { items: HistoryItem[] };
@@ -17,9 +17,9 @@ const slice = createSlice({
       const item = action.payload;
       const idx = state.items.findIndex(i => i.address === item.address);
       if (idx >= 0) {
-        state.items[idx] = { ...state.items[idx], ...item, ts: Date.now() };
+        state.items[idx] = { ...state.items[idx], ...item, timestamp: Date.now() };
       } else {
-        state.items.unshift({ ...item, ts: Date.now() });
+        state.items.unshift({ ...item, timestamp: Date.now() });
       }
     },
     toggleFavorite(state, action: PayloadAction<string>) {

@@ -6,6 +6,8 @@ import {
 } from '@reduxjs/toolkit/query';
 
 import { COINGECKO_API_BASE_URL, COINGECKO_API_KEY } from '@env';
+import { logger } from 'utils/logger';
+import { applyFilters } from 'utils/coinFilters';
 
 export type Coin = {
   id: string;
@@ -48,9 +50,9 @@ const loggingBaseQuery: BaseQueryFn<
   unknown,
   FetchBaseQueryError
 > = async (args, api, extraOptions) => {
-  console.log('[API Request]', args);
+  logger.info('[API Request]', args);
   const result = await baseQuery(args, api, extraOptions);
-  console.log('[API Response]', result);
+  logger.info('[API Response]', result);
   return result;
 };
 
@@ -74,30 +76,8 @@ export const coinGeckoApi = createApi({
         if (search) params.set('ids', encodeURIComponent(search));
         return `/coins/markets?${params.toString()}`;
       },
-      transformResponse: (response: Coin[], _meta, arg) => {
-        let data = response;
-        if (arg?.price_min !== undefined)
-          data = data.filter(c => c.current_price >= arg.price_min!);
-        if (arg?.price_max !== undefined)
-          data = data.filter(c => c.current_price <= arg.price_max!);
-        if (arg?.variation === 'positive') {
-          data = data
-            .filter(c => c.price_change_percentage_24h > 0)
-            .sort(
-              (a, b) =>
-                b.price_change_percentage_24h - a.price_change_percentage_24h,
-            );
-        }
-        if (arg?.variation === 'negative') {
-          data = data
-            .filter(c => c.price_change_percentage_24h < 0)
-            .sort(
-              (a, b) =>
-                a.price_change_percentage_24h - b.price_change_percentage_24h,
-            );
-        }
-        return data;
-      },
+      transformResponse: (response: Coin[], _meta, arg) =>
+        applyFilters(response, arg),
       serializeQueryArgs: ({ endpointName, queryArgs }) => {
         const rest = { ...(queryArgs || {}) };
         delete rest.page;

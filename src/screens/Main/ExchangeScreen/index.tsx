@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { JSX } from 'react';
 import { View } from 'react-native';
 
 import BaseScreen from 'components/BaseScreen';
@@ -15,7 +15,7 @@ import CurrencyPickerModal from './components/CurrencyPickerModal';
 import SelectField from './components/SelectField';
 import styles from './styles';
 
-function ExchangeScreen() {
+function ExchangeScreen(): JSX.Element {
   const {
     amount,
     setAmount,

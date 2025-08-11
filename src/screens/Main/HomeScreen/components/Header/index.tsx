@@ -14,7 +14,7 @@ type Props = {
   onChange: (patch: Partial<HomeFilters>) => void;
 };
 
-export default function Header({ filters, onChange }: Props) {
+const Header: React.FC<Props> = ({ filters, onChange }) => {
   const { query, sortDir, minPrice, maxPrice, variation } = filters;
 
   const changeNumber = (v: string, key: 'minPrice' | 'maxPrice') => {
@@ -92,3 +92,5 @@ export default function Header({ filters, onChange }: Props) {
     </View>
   );
 }
+
+export default Header;

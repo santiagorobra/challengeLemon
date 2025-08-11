@@ -15,7 +15,7 @@ type Props = {
   pillStyle?: ViewStyle;
 };
 
-const SelectField = ({
+const SelectField: React.FC<Props> = ({
   label,
   value,
   placeholder,
@@ -24,7 +24,7 @@ const SelectField = ({
   containerStyle,
   labelStyle,
   pillStyle,
-}: Props) => (
+}) => (
   <View style={containerStyle}>
     <AppText variant="body" colorType="secondary" style={labelStyle}>
       {label}

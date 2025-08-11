@@ -10,9 +10,9 @@ import styles from './styles';
 type Props = {
   error: string;
   onRefresh?: () => void;
-}
+};
 
-const ErrorComponent = ({ error, onRefresh }: Props) => (
+const ErrorComponent: React.FC<Props> = ({ error, onRefresh }) => (
   <View style={styles.center}>
     <AppText colorType="error" style={styles.error}>
       {error}

@@ -28,14 +28,14 @@ type Props = {
   showPrice?: boolean;
 };
 
-const CurrencyPickerModal = ({
+const CurrencyPickerModal: React.FC<Props> = ({
   visible,
   title,
   items,
   onSelect,
   onClose,
   showPrice,
-}: Props) => {
+}) => {
   const [q, setQ] = useState('');
 
   const filtered = useMemo(() => {
@@ -135,6 +135,6 @@ const CurrencyPickerModal = ({
       </SafeAreaView>
     </Modal>
   );
-}
+};
 
 export default CurrencyPickerModal;

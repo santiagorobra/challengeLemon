@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { JSX, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
 import BaseScreen from 'components/BaseScreen';
@@ -11,7 +11,7 @@ import { clearHistory } from 'store/scannerHistorySlice';
 
 import styles from './styles';
 
-function ProfileScreen() {
+function ProfileScreen(): JSX.Element {
   const { signOut } = useGoogleAuth();
   const { user } = useSession();
   const dispatch = useDispatch();

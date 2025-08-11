@@ -11,12 +11,12 @@ type Props = {
   color?: string;
 };
 
-const AppButtonIcon = ({
+const AppButtonIcon: React.FC<Props> = ({
   onPress,
   name,
   size = 24,
   color = MARINER,
-}: Props) => (
+}) => (
   <TouchableOpacity onPress={onPress}>
     <AppIcon name={name} color={color} size={size} focused={true} />
   </TouchableOpacity>

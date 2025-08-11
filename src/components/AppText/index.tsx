@@ -21,13 +21,13 @@ const colorMap: Record<ColorType, string> = {
   success: GREEN,
 };
 
-const AppText = ({
+const AppText: React.FC<Props> = ({
   variant = 'body',
   colorType = 'primary',
   style,
   children,
   ...rest
-}: Props) => (
+}) => (
   <RNText
     style={[textStyles[variant], { color: colorMap[colorType] }, style]}
     {...rest}

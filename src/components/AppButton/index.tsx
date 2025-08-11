@@ -22,7 +22,7 @@ interface Props {
   textStyle?: TextStyle;
 }
 
-const AppButton = ({
+const AppButton: React.FC<Props> = ({
   title,
   onPress,
   variant = 'primary',
@@ -30,7 +30,7 @@ const AppButton = ({
   disabled = false,
   style,
   textStyle,
-}: Props) => (
+}) => (
   <TouchableOpacity
     style={[
       styles.base,

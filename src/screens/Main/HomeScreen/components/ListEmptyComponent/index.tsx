@@ -9,9 +9,9 @@ import styles from './styles';
 
 type Props = {
   loadingInitial: boolean;
-}
+};
 
-const ListEmptyComponent = ({ loadingInitial }: Props) =>
+const ListEmptyComponent: React.FC<Props> = ({ loadingInitial }) =>
   loadingInitial ? (
     <View style={styles.center}>
       <ActivityIndicator size="large" color={WHITE} />

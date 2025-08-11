@@ -8,7 +8,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-function BaseScreen({ children }: Props) {
+const BaseScreen: React.FC<Props> = ({ children }) => {
   return (
     <>
       <SafeAreaView style={styles.safeArea} edges={['top']} />

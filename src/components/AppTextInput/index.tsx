@@ -12,13 +12,13 @@ type Props = TextInputProps & {
   onChangeText: (text: string) => void;
 };
 
-const AppTextInput = ({
+const AppTextInput: React.FC<Props> = ({
   placeholder,
   value,
   onChangeText,
   style,
   ...rest
-}: Props) => (
+}) => (
   <TextInput
     placeholder={placeholder}
     placeholderTextColor={GRAY}

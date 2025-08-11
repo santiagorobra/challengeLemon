@@ -13,13 +13,13 @@ type Props = {
   change24h: number;
 };
 
-const CoinRow = ({
+const CoinRow: React.FC<Props> = ({
   name,
   symbol,
   image,
   price,
   change24h,
-}: Props) => {
+}) => {
   const isNegative = change24h < 0;
 
   return (
@@ -27,9 +27,7 @@ const CoinRow = ({
       <View style={styles.left}>
         <Image source={{ uri: image }} style={styles.icon} />
         <View>
-          <AppText variant="body">
-            {name}
-          </AppText>
+          <AppText variant="body">{name}</AppText>
           <AppText variant="caption" colorType="secondary">
             {symbol.toUpperCase()}
           </AppText>
@@ -47,6 +45,6 @@ const CoinRow = ({
       </View>
     </View>
   );
-}
+};
 
 export default memo(CoinRow);

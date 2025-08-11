@@ -7,9 +7,9 @@ import styles from './styles';
 
 type Props = {
   loadingNext: boolean;
-}
+};
 
-const ListFooterComponent = ({ loadingNext }: Props) =>
+const ListFooterComponent: React.FC<Props> = ({ loadingNext }) =>
   loadingNext ? (
     <View style={styles.container}>
       <ActivityIndicator size="large" color={WHITE} />

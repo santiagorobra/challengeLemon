@@ -15,7 +15,7 @@ type Props = {
   favorite: boolean;
 };
 
-export function HistoryRow({ address, ts, favorite }: Props) {
+const HistoryRow: React.FC<Props> = ({ address, ts, favorite }) => {
   const dispatch = useDispatch();
 
   return (
@@ -37,4 +37,6 @@ export function HistoryRow({ address, ts, favorite }: Props) {
       />
     </View>
   );
-}
+};
+
+export default HistoryRow;

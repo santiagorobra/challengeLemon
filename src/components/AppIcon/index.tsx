@@ -10,11 +10,11 @@ type Props = {
   focused: boolean;
 }
 
-const AppIcon = ({
+const AppIcon: React.FC<Props> = ({
   name,
   size = 24,
   color = MARINER,
   focused,
-}: Props) => <Icon name={name} size={size} color={focused ? color : WHITE}  />;
+}) => <Icon name={name} size={size} color={focused ? color : WHITE}  />;
 
 export default AppIcon;

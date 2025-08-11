@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { JSX, useCallback, useState } from 'react';
 import { FlatList, RefreshControl } from 'react-native';
 
 import BaseScreen from 'components/BaseScreen';
@@ -22,7 +22,7 @@ const INITIAL_FILTERS: HomeFilters = {
   variation: 'all',
 };
 
-function HomeScreen() {
+function HomeScreen(): JSX.Element {
   const [filters, setFilters] = useState<HomeFilters>(INITIAL_FILTERS);
 
   const onChangeFilters = useCallback(

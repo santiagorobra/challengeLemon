@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { JSX } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
 import { useGoogleAuth } from 'hooks/useGoogleAuth';
@@ -7,7 +7,7 @@ import { STRINGS } from 'constants/strings';
 
 import styles from './styles';
 
-function LoginScreen() {
+function LoginScreen(): JSX.Element {
   const { GoogleSigninButton, loading, error, signIn } = useGoogleAuth();
 
   return (

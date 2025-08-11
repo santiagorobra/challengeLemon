@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { JSX } from 'react';
 import { SectionList, StyleSheet, View } from 'react-native';
 import { Camera } from 'react-native-vision-camera';
 
@@ -8,10 +8,10 @@ import AppText from 'components/AppText';
 import { STRINGS } from 'constants/strings';
 import { useWalletScanner } from 'hooks/useWalletScanner';
 
-import { HistoryRow } from './components/HistoryRow';
+import HistoryRow from './components/HistoryRow';
 import styles from './styles';
 
-function ScannerScreen() {
+function ScannerScreen(): JSX.Element {
   const {
     device,
     hasPermission,

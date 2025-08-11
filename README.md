@@ -94,6 +94,12 @@ This project uses the CoinGecko API as the data source for cryptocurrency and fi
 **CoinGecko API Documentation**
 https://docs.coingecko.com/reference/coins-markets
 
+## 🎥 Demo
+### [Feature/Login – Screen 1: Login with Google](https://github.com/santiagorobra/challengeLemon/pull/1)
+### [Feature/Home – Screen 2: Crypto List](https://github.com/santiagorobra/challengeLemon/pull/2)
+### [Feature/Exchange – Screen 3: Exchange (Crypto ↔ Fiat)](https://github.com/santiagorobra/challengeLemon/pull/3)
+### [Feature/Scanner – Screen 4: Wallet Scanner (QR)](https://github.com/santiagorobra/challengeLemon/pull/4)
+
 ## 📄 Notes
 Normally, my merge requests aim to keep changes within 16 files maximum, but due to time constraints in this challenge, several features were implemented together, resulting in a larger number of modified files.
 

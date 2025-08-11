@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Modal, View, FlatList, KeyboardAvoidingView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
 import AppText from 'components/AppText';
 import AppTextInput from 'components/AppTextInput';
@@ -9,9 +10,10 @@ import { STRINGS } from 'constants/strings';
 import { WHITE } from 'constants/colors';
 import { PickerItem } from 'types/currencyPickerModal';
 import { isIOS } from 'utils/platform';
+import { filterBySearch } from 'utils/coinFilters';
 
 import CurrencyPickerItem from '../CurrencyPickerItem';
-import styles from './styles';
+import { getStyles } from './styles';
 
 type Props = {
   visible: boolean;
@@ -30,19 +32,13 @@ const CurrencyPickerModal: React.FC<Props> = ({
   onClose,
   showPrice,
 }) => {
+  const bottomTabBarHeight = useBottomTabBarHeight();
+  const styles = useMemo(
+    () => getStyles(bottomTabBarHeight),
+    [bottomTabBarHeight],
+  );
   const [searchQuery, setSearchQuery] = useState('');
-
-  const filtered = useMemo(() => {
-    const searchTerm = searchQuery.trim().toLowerCase();
-    if (!searchTerm) {
-      return items;
-    }
-    return items.filter(
-      currency =>
-        currency.symbol.toLowerCase().includes(searchTerm) ||
-        currency.name.toLowerCase().includes(searchTerm),
-    );
-  }, [searchQuery, items]);
+  const filtered = useMemo(() => filterBySearch(items, searchQuery), [items, searchQuery]);
 
   return (
     <Modal
@@ -80,7 +76,13 @@ const CurrencyPickerModal: React.FC<Props> = ({
 
             <FlatList
               data={filtered}
+              style={styles.list}
               keyExtractor={i => i.id}
+              showsVerticalScrollIndicator={false}
+              initialNumToRender={12}
+              maxToRenderPerBatch={8}
+              windowSize={7}
+              updateCellsBatchingPeriod={50}
               renderItem={({ item }) => (
                 <CurrencyPickerItem
                   key={item.id}

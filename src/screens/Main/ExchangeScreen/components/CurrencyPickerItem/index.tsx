@@ -22,7 +22,7 @@ const CurrencyPickerItem: React.FC<Props> = ({ item, showPrice, onSelect }) => (
       </View>
     )}
     <View style={styles.flex}>
-      <AppText variant="body">{item.name}</AppText>
+      <AppText variant="body" style={styles.flex}>{item.name}</AppText>
       <AppText variant="caption" colorType="secondary">
         {item.symbol}
       </AppText>

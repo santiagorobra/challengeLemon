@@ -1,4 +1,5 @@
 import type { Coin, GetCoinsParams } from 'services/coinGeckoApi';
+import { SearchableItem } from 'types/currencyPickerModal';
 
 const filterByMinPrice = (coin: Coin, min?: number) =>
   min === undefined || coin.current_price >= min;
@@ -20,7 +21,7 @@ const sortByChangeAsc = (a: Coin, b: Coin) =>
 
 export const applyFilters = (
   coins: Coin[],
-  { price_min, price_max, variation }: GetCoinsParams
+  { price_min, price_max, variation }: GetCoinsParams,
 ) => {
   let data = coins
     .filter(c => filterByMinPrice(c, price_min))
@@ -35,4 +36,19 @@ export const applyFilters = (
   }
 
   return data;
+};
+
+export const filterBySearch = <T extends SearchableItem>(
+  items: T[],
+  searchQuery: string,
+): T[] => {
+  const searchTerm = searchQuery.trim().toLowerCase();
+  if (!searchTerm) {
+    return items;
+  }
+  return items.filter(
+    item =>
+      item.symbol.toLowerCase().includes(searchTerm) ||
+      item.name.toLowerCase().includes(searchTerm),
+  );
 };

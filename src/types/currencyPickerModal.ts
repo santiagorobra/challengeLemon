@@ -6,3 +6,9 @@ export type PickerItem = {
   price?: number;
   change24h?: number;
 };
+
+export type SearchableItem = {
+  id: string;
+  symbol: string;
+  name: string;
+};
